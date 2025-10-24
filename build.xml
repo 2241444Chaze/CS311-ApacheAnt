@@ -69,7 +69,7 @@
     </target>
 
     <target name="doc" description="Generates Javadoc documentation for the project.">
-        <javadoc packagenames="com.team.*"
+        <javadoc packagenames="com.team2.*"
                  sourcepath="${src.dir}"
                  destdir="${doc.dir}"
                  author="true"

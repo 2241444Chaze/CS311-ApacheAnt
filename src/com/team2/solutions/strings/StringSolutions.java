@@ -1,4 +1,4 @@
-package com.team.solutions.strings;
+package com.team2.solutions.strings;
 
 import java.util.*;
 

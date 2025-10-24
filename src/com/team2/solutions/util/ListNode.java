@@ -1,4 +1,4 @@
-package com.team.solutions.util;
+package com.team2.solutions.util;
 public class ListNode {
         public int val;
         public ListNode next;

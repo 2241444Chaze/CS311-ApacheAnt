@@ -1,6 +1,6 @@
-package com.team.solutions.lists;
+package com.team2.solutions.lists;
 
-import com.team.solutions.util.ListNode;
+import com.team2.solutions.util.ListNode;
 
 import java.util.PriorityQueue;
 

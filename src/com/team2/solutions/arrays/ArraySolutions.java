@@ -1,4 +1,4 @@
-package com.team.solutions.arrays;
+package com.team2.solutions.arrays;
 
 import java.util.Arrays;
 

@@ -1,9 +1,9 @@
-package com.team;
+package com.team2;
 
-import com.team.solutions.arrays.ArraySolutions;
-import com.team.solutions.lists.LinkedListSolutions;
-import com.team.solutions.math.MathSolutions;
-import com.team.solutions.strings.StringSolutions;
+import com.team2.solutions.arrays.ArraySolutions;
+import com.team2.solutions.lists.LinkedListSolutions;
+import com.team2.solutions.math.MathSolutions;
+import com.team2.solutions.strings.StringSolutions;
 
 /**
  * The main entry point for the team's project.

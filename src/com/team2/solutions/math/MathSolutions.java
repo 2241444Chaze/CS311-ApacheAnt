@@ -1,4 +1,4 @@
-package com.team.solutions.math;
+package com.team2.solutions.math;
 
 public class MathSolutions {
     public boolean isPalindrome(int x) {
