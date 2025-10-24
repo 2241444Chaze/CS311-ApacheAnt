@@ -207,6 +207,116 @@ public class MainApp {
         } while (option != 3);
     }
 
+
+    private void mathSolutionsMenu(Scanner sc) {
+        int option;
+        do {
+            System.out.println("\n--- MATH SOLUTIONS MENU ---");
+            System.out.println("1. Is Palindrome Number");
+            System.out.println("2. Is Power of Four");
+            System.out.println("3. Next Beautiful Number");
+            System.out.println("4. Back to Main Menu");
+            System.out.print("Enter your choice: ");
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1 -> {
+                    System.out.println("\nTesting isPalindrome...");
+                    int num1 = 121;
+                    int num2 = -121;
+                    int num3 = 123;
+                    System.out.println("Input: " + num1 + " → " + mathSolutions.isPalindrome(num1));
+                    System.out.println("Input: " + num2 + " → " + mathSolutions.isPalindrome(num2));
+                    System.out.println("Input: " + num3 + " → " + mathSolutions.isPalindrome(num3));
+                }
+                case 2 -> {
+                    System.out.println("\nTesting isPowerOfFour...");
+                    int[] nums = {1, 4, 16, 5, 8};
+                    for (int n : nums) {
+                        System.out.println("Input: " + n + " → " + mathSolutions.isPowerOfFour(n));
+                    }
+                }
+                case 3 -> {
+                    System.out.println("\nTesting nextBeautifulNumber...");
+                    int[] inputs = {1, 9, 22, 120};
+                    for (int n : inputs) {
+                        System.out.println("Input: " + n + " → Next Beautiful: " + mathSolutions.nextBeautifulNumber(n));
+                    }
+                }
+                case 4 -> System.out.println("Returning to main menu...");
+                default -> System.out.println("Invalid choice.");
+            }
+        } while (option != 4);
+    }
+
+
+
+    private void stringSolutionsMenu(Scanner sc) {
+        int option;
+        do {
+            System.out.println("\n--- STRING SOLUTIONS MENU ---");
+            System.out.println("1. Is Palindrome");
+            System.out.println("2. Length of Longest Substring Without Repeating Characters");
+            System.out.println("3. Longest Common Prefix");
+            System.out.println("4. Roman To Integer");
+            System.out.println("5. Find Substring (Concatenation of Words)");
+            System.out.println("6. Back to Main Menu");
+            System.out.print("Enter your choice: ");
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1 -> {
+                    System.out.println("\nTesting isPalindrome...");
+                    String[] inputs = {"racecar", "hello", "madam"};
+                    for (String s : inputs) {
+                        System.out.println("Input: \"" + s + "\" → " + stringSolutions.isPalindrome(s));
+                    }
+                }
+                case 2 -> {
+                    System.out.println("\nTesting lengthOfLongestSubstring...");
+                    String[] inputs = {"abcabcbb", "bbbbb", "pwwkew"};
+                    for (String s : inputs) {
+                        System.out.println("Input: \"" + s + "\" → " + stringSolutions.lengthOfLongestSubstring(s));
+                    }
+                }
+                case 3 -> {
+                    System.out.println("\nTesting longestCommonPrefix...");
+                    String[][] testCases = {
+                            {"flower", "flow", "flight"},
+                            {"dog", "racecar", "car"},
+                            {"interview", "internet", "internal"}
+                    };
+                    for (String[] strs : testCases) {
+                        System.out.println("Input: " + Arrays.toString(strs) +
+                                " → Prefix: " + stringSolutions.longestCommonPrefix(strs));
+                    }
+                }
+                case 4 -> {
+                    System.out.println("\nTesting romanToInt...");
+                    String[] romans = {"III", "LVIII", "MCMXCIV"};
+                    for (String roman : romans) {
+                        System.out.println("Roman: " + roman + " → Integer: " + stringSolutions.romanToInt(roman));
+                    }
+                }
+                case 5 -> {
+                    System.out.println("\nTesting findSubstring...");
+                    String s = "barfoothefoobarman";
+                    String[] words = {"foo", "bar"};
+                    System.out.println("Input: \"" + s + "\", Words: " + Arrays.toString(words) +
+                            " → Indices: " + stringSolutions.findSubstring(s, words));
+                }
+                case 6 -> System.out.println("Returning to main menu...");
+                default -> System.out.println("Invalid choice.");
+            }
+        } while (option != 6);
+    }
+
+
+
+
+
+
+
     private boolean isEqual(ListNode a, ListNode b) {
         while (a != null && b != null) {
             if (a.val != b.val) return false;
