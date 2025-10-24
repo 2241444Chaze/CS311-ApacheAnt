@@ -42,8 +42,8 @@ public class MainApp {
             switch (choice) {
                 case 1 -> arraySolutionsMenu(sc);
                 case 2 -> linkedListSolutionsMenu(sc);
-                case 3 -> System.out.println("Math Solutions feature coming soon...");
-                case 4 -> System.out.println("String Solutions feature coming soon...");
+                case 3 -> mathSolutionsMenu(sc);
+                case 4 -> stringSolutionsMenu(sc);
                 case 5 -> System.out.println("Exiting program. Goodbye!");
                 default -> System.out.println("Invalid choice. Try again.");
             }
@@ -310,11 +310,6 @@ public class MainApp {
             }
         } while (option != 6);
     }
-
-
-
-
-
 
 
     private boolean isEqual(ListNode a, ListNode b) {
