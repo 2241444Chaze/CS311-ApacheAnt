@@ -165,7 +165,7 @@ public class MainAppTest {
         assertEquals(22, math.nextBeautifulNumber(1));
         assertEquals(22, math.nextBeautifulNumber(9));
         assertEquals(122, math.nextBeautifulNumber(22));
-        assertEquals(1333, math.nextBeautifulNumber(120));
+        assertEquals(122, math.nextBeautifulNumber(120));
     }
 
 
