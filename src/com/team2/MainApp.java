@@ -1,6 +1,5 @@
 package com.team2;
 
-import java.util.List;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -10,11 +9,7 @@ import com.team2.solutions.math.MathSolutions;
 import com.team2.solutions.strings.StringSolutions;
 import com.team2.solutions.util.ListNode;
 
-/**
- * The main entry point for the team's project.
- */
 public class MainApp {
-
     private ArraySolutions arraySolutions = new ArraySolutions();
     private LinkedListSolutions linkedListSolutions = new LinkedListSolutions();
     private MathSolutions mathSolutions = new MathSolutions();
@@ -152,9 +147,9 @@ public class MainApp {
                     ListNode actual = linkedListSolutions.addTwoNumbers(l1, l2);
 
                     if (isEqual(expected, actual)) {
-                        System.out.println("✅ addTwoNumbers test passed!");
+                        System.out.println("addTwoNumbers test passed!");
                     } else {
-                        System.out.println("❌ addTwoNumbers test failed!");
+                        System.out.println("addTwoNumbers test failed!");
                         System.out.print("Expected: ");
                         printList(expected);
                         System.out.print("Actual: ");
@@ -190,9 +185,9 @@ public class MainApp {
                     ListNode actual = linkedListSolutions.mergeKLists(lists);
 
                     if (isEqual(expected, actual)) {
-                        System.out.println("✅ mergeKLists test passed!");
+                        System.out.println("mergeKLists test passed!");
                     } else {
-                        System.out.println("❌ mergeKLists test failed!");
+                        System.out.println("mergeKLists test failed!");
                         System.out.print("Expected: ");
                         printList(expected);
                         System.out.print("Actual: ");
@@ -206,7 +201,6 @@ public class MainApp {
 
         } while (option != 3);
     }
-
 
     private void mathSolutionsMenu(Scanner sc) {
         int option;
@@ -248,8 +242,6 @@ public class MainApp {
             }
         } while (option != 4);
     }
-
-
 
     private void stringSolutionsMenu(Scanner sc) {
         int option;
@@ -311,7 +303,6 @@ public class MainApp {
         } while (option != 6);
     }
 
-
     private boolean isEqual(ListNode a, ListNode b) {
         while (a != null && b != null) {
             if (a.val != b.val) return false;
@@ -329,6 +320,4 @@ public class MainApp {
         }
         System.out.println();
     }
-
-
 }
