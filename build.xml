@@ -1,0 +1,105 @@
+<project name="TeamProject" default="run" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
+
+    <description>
+        Build file for the team's collected Java solutions.
+        This script handles cleaning, compiling, running, documentation, and packaging.
+    </description>
+
+    <property file="build.properties"/>
+
+    <path id="project.classpath">
+        <pathelement location="${classes.dir}"/>
+    </path>
+
+    <target name="init" description="Creates the required directory structure.">
+        <tstamp/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+    </target>
+
+    <target name="clean" description="Deletes all generated files and directories.">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
+
+
+    <target name="compile-all" depends="init" description="Compiles the entire Java source code.">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false" debug="true">
+            <classpath refid="project.classpath"/>
+        </javac>
+        <echo>Successfully compiled all source files.</echo>
+    </target>
+
+    <target name="compile-single" depends="init" description="Compiles a single specified Java file. Use -Dfile=&lt;path&gt;">
+        <fail message="You must specify which file to compile. Use -Dfile=path/to/your/File.java" unless="file"/>
+        <javac srcdir="." destdir="${classes.dir}" includes="${file}" includeantruntime="false" debug="true">
+            <classpath refid="project.classpath"/>
+        </javac>
+        <echo>Successfully compiled ${file}.</echo>
+    </target>
+
+    <target name="run" depends="compile-all" description="Executes the designated main file of the project.">
+        <java classname="${main.class}" fork="true">
+            <classpath refid="project.classpath"/>
+        </java>
+    </target>
+
+    <target name="run-file" description="Compiles and runs a single file with a main method. Use -Dfile=&lt;path&gt;">
+        <fail message="You must specify which file to run. Use -Dfile=path/to/your/File.java" unless="file"/>
+
+        <antcall target="compile-single">
+            <param name="file" value="${file}"/>
+        </antcall>
+
+        <pathconvert property="run.class.name" dirsep=".">
+            <path>
+                <pathelement location="${file}"/>
+            </path>
+            <map from="${src.dir}/" to=""/>
+            <map from=".java" to=""/>
+        </pathconvert>
+
+        <echo>Executing class: ${run.class.name}</echo>
+        <java classname="${run.class.name}" fork="true">
+            <classpath refid="project.classpath"/>
+        </java>
+    </target>
+
+    <target name="doc" description="Generates Javadoc documentation for the project.">
+        <javadoc packagenames="com.team.*"
+                 sourcepath="${src.dir}"
+                 destdir="${doc.dir}"
+                 author="true"
+                 version="true"
+                 use="true"
+                 windowtitle="${project.name} API Documentation">
+            <doctitle><![CDATA[<h1>${project.name}</h1>]]></doctitle>
+            <bottom><![CDATA[<i>Copyright &#169; 2025 ${team.name}. All Rights Reserved.</i>]]></bottom>
+        </javadoc>
+        <echo>Javadoc generated in '${doc.dir}' directory.</echo>
+    </target>
+
+    <target name="jar" depends="compile-all, doc" description="Creates two JAR files: one for classes and one for docs.">
+        <jar destfile="${dist.dir}/${jar.classes.file}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Implementation-Title" value="${project.name}"/>
+                <attribute name="Implementation-Version" value="${project.version}"/>
+                <attribute name="Implementation-Vendor" value="${team.name}"/>
+            </manifest>
+        </jar>
+        <echo>Created executable JAR: ${dist.dir}/${jar.classes.file}</echo>
+
+        <jar destfile="${dist.dir}/${jar.doc.file}" basedir="${doc.dir}"/>
+        <echo>Created documentation JAR: ${dist.dir}/${jar.doc.file}</echo>
+        <echo>All JAR files are located in the '${dist.dir}' directory.</echo>
+    </target>
+
+    <target name="rebuild" depends="clean, jar" description="Performs a full clean build: cleans, compiles, creates docs, and packages into JARs.">
+        <echo>Project has been completely rebuilt.</echo>
+    </target>
+
+</project>
