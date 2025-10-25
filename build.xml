@@ -68,16 +68,19 @@
         </java>
     </target>
 
-    <target name="doc" description="Generates Javadoc documentation for the project.">
-        <javadoc packagenames="com.team2.*"
-                 sourcepath="${src.dir}"
-                 destdir="${doc.dir}"
+    <target name="doc" depends="init" description="Generates Javadoc documentation for the project.">
+        <javadoc destdir="${doc.dir}"
                  author="true"
                  version="true"
                  use="true"
-                 windowtitle="${project.name} API Documentation">
+                 windowtitle="${project.name} API Documentation"
+                 failonerror="false">
             <doctitle><![CDATA[<h1>${project.name}</h1>]]></doctitle>
             <bottom><![CDATA[<i>Copyright &#169; 2025 ${team.name}. All Rights Reserved.</i>]]></bottom>
+            <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+                <exclude name="**/*Test*.java"/>
+            </fileset>
         </javadoc>
         <echo>Javadoc generated in '${doc.dir}' directory.</echo>
     </target>
